@@ -7,9 +7,16 @@ import {createRoot} from 'react-dom/client'; //使用新的创建方法  18+之�
 import App from './App';
 import {Provider} from 'react-redux';
 import store from './redux/store';
+import { ConfigProvider } from 'antd';
+import { BrowserRouter } from 'react-router-dom';
+import zhCN from 'antd/es/locale/zh_CN';
 
 createRoot(document.getElementById('root')).render(
-    <Provider store={store}>
-        <App />
-    </Provider>
+    <BrowserRouter>
+        <Provider store={store}>
+            <ConfigProvider locale={zhCN}>
+                <App />
+            </ConfigProvider>
+        </Provider>
+    </BrowserRouter>
  )
