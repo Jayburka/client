@@ -2,7 +2,7 @@
  * @Author: qiangqiang.cao
  * Copyright (c) 2023 - 2024, Shanghai Rural Commercial Bank Co., LTD. ALL rights reserved.
  */
-import Issuess from '../pages/Issue';
+import Issue from '../pages/Issue';
 import Interviews from '../pages/Interviews';
 import Books from '../pages/Books';
 import { Route, Routes, Navigate } from 'react-router';
@@ -16,11 +16,11 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <Issuess />,
+                element: <Issue />,
             },
             {
                 path: '/issue',
-                element: <Issuess />,
+                element: <Issue />,
             },
             {
                 path: '/books',

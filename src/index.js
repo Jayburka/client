@@ -2,10 +2,6 @@
  * @Author: qiangqiang.cao
  * Copyright (c) 2023 - 2024, Shanghai Rural Commercial Bank Co., LTD. ALL rights reserved.
  */
-/*
- * @Author: qiangqiang.cao
- * Copyright (c) 2023 - 2024, Shanghai Rural Commercial Bank Co., LTD. ALL rights reserved.
- */
 import React from 'react';
 import {createRoot} from 'react-dom/client'; //使用新的创建方法  18+之后使用新的根渲染方式。
 import App from './App';
@@ -17,11 +13,11 @@ import zhCN from 'antd/es/locale/zh_CN';
 import router from './router';
 
 createRoot(document.getElementById('root')).render(
-    <RouterProvider router={router}>
-        <Provider store={store}>
+    <Provider store={store}>
+        <RouterProvider router={router}>
             <ConfigProvider locale={zhCN}>
                 <App />
             </ConfigProvider>
-        </Provider>
-    </RouterProvider>
+        </RouterProvider>
+    </Provider>
  )

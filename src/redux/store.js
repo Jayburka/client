@@ -2,13 +2,16 @@
  * @Author: qiangqiang.cao
  * Copyright (c) 2023 - 2024, Shanghai Rural Commercial Bank Co., LTD. ALL rights reserved.
  */
+/*
+ * @Author: qiangqiang.cao
+ * Copyright (c) 2023 - 2024, Shanghai Rural Commercial Bank Co., LTD. ALL rights reserved.
+ */
 import {configureStore} from '@reduxjs/toolkit';
-import todolistReducer from './todolistSlice';
+import userReducer from './userSlice';
 
 const store = configureStore({
-    name:'todolist',
     reducer: {
-        todolist: todolistReducer,
+        user: userReducer,
     },
 });
 

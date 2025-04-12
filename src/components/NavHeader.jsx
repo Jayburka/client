@@ -6,11 +6,12 @@
  * @Author: qiangqiang.cao
  * Copyright (c) 2023 - 2024, Shanghai Rural Commercial Bank Co., LTD. ALL rights reserved.
  */
+
 import React from 'react'
 import { NavLink } from 'react-router'
-import { Button, Input, Select, Space } from 'antd';
-const { Search } = Input;
-export default function NavHeader() {
+import {Input, Select, Space } from 'antd';
+import LoginAvatar from './LoginAvatar';
+export default function NavHeader(props) {
     const options = [
         { value: 'issue', label: '问答' },
         { value: 'book', label: '书籍' },
@@ -40,7 +41,7 @@ export default function NavHeader() {
         </div>
         {/* 登录按钮 */}
         <div className='loginBtnContainer'>
-            <Button type='primary'>登录</Button>
+          <LoginAvatar loginHandler={props.loginHandler}/>
         </div>
     </div>
   ) 
