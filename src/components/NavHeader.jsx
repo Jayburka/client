@@ -2,8 +2,12 @@
  * @Author: qiangqiang.cao
  * Copyright (c) 2023 - 2024, Shanghai Rural Commercial Bank Co., LTD. ALL rights reserved.
  */
+/*
+ * @Author: qiangqiang.cao
+ * Copyright (c) 2023 - 2024, Shanghai Rural Commercial Bank Co., LTD. ALL rights reserved.
+ */
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router'
 import { Button, Input, Select, Space } from 'antd';
 const { Search } = Input;
 export default function NavHeader() {
@@ -29,13 +33,15 @@ export default function NavHeader() {
         </nav>
         {/* 搜索框 */}
         <div className='searchContainer'>
-        <Space.Compact>
-            <Select defaultValue="issue" options={options} />
-            <Input defaultValue="请输入要搜索的内容"  allowClear/>
-        </Space.Compact>
-    
+          <Space.Compact style={{ width: '100%' }}>
+              <Select size='large'  defaultValue="issue" options={options} style={{width: '20%'}} />
+              <Input.Search defaultValue="请输入要搜索的内容" size='large'  enterButton="搜索" allowClear style={{width: '80%'}} />
+          </Space.Compact>
         </div>
         {/* 登录按钮 */}
+        <div className='loginBtnContainer'>
+            <Button type='primary'>登录</Button>
+        </div>
     </div>
   ) 
 }

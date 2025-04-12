@@ -14,7 +14,7 @@ import './css/App.css';
 import React from 'react';
 import NavHeader from './components/NavHeader';
 import PageFooter from './components/PageFooter';
-import { Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router';
 import { Layout } from 'antd';
 
 const { Header, Content, Footer } = Layout;
