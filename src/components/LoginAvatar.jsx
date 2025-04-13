@@ -1,6 +1,14 @@
+/*
+ * @Author: qiangqiang.cao
+ * @Date: 2025-04-12 15:36:21
+ * @LastEditors: OBKoro1
+ * @LastEditTime: 2025-04-14 00:09:26
+ * @FilePath: \client\src\components\LoginAvatar.jsx
+ * Copyright (c) 2023 - 2024, Shanghai Rural Commercial Bank Co., LTD. ALL rights reserved.
+ */
 import React from 'react'
 import { useSelector } from 'react-redux';
-import { Button, List, Popover, Avatar } from 'antd';
+import { Button, List, Popover, Avatar, Image } from 'antd';
 import styles from '../css/LoginAvatar.module.css';
 import { UserOutlined } from '@ant-design/icons';
 
@@ -26,7 +34,7 @@ function LoginAvatar(props) {
         // 已登录
             <Popover content={content} title="Title" placement="bottom" >
                 <div className={styles.avatarContainer}>
-                    <Avatar size='large'  icon={<UserOutlined />}/>
+                    <Avatar size='large' src={<Image src={userInfo?.avatar} />} icon={<UserOutlined />}/>
                 </div>
             </Popover>
     ) : (
