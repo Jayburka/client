@@ -2,7 +2,7 @@
  * @Author: qiangqiang.cao
  * @Date: 2025-04-12 15:36:21
  * @LastEditors: OBKoro1
- * @LastEditTime: 2025-04-14 00:09:26
+ * @LastEditTime: 2025-04-14 00:22:42
  * @FilePath: \client\src\components\LoginAvatar.jsx
  * Copyright (c) 2023 - 2024, Shanghai Rural Commercial Bank Co., LTD. ALL rights reserved.
  */
@@ -34,7 +34,7 @@ function LoginAvatar(props) {
         // 已登录
             <Popover content={content} title="Title" placement="bottom" >
                 <div className={styles.avatarContainer}>
-                    <Avatar size='large' src={<Image src={userInfo?.avatar} />} icon={<UserOutlined />}/>
+                    <Avatar size='large' src={<Image src={userInfo?.avatar} preview={false}/>} icon={<UserOutlined />}/>
                 </div>
             </Popover>
     ) : (
