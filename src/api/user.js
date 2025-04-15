@@ -2,7 +2,7 @@
  * @Author: qiangqiang.cao
  * @Date: 2025-04-13 16:21:36
  * @LastEditors: OBKoro1
- * @LastEditTime: 2025-04-13 22:03:18
+ * @LastEditTime: 2025-04-14 22:29:04
  * @FilePath: \client\src\api\user.js
  * Copyright (c) 2023 - 2024, Shanghai Rural Commercial Bank Co., LTD. ALL rights reserved.
  */
@@ -33,6 +33,24 @@ export const addUser = (data) => {
         data
     })
 }
+export const userLogin = (data) => {
+    return request({
+        url: '/api/user/login',
+        method: 'POST',
+        data
+    })
+}
 
+export const getUserById = (id) => {
+    return request({
+        url: `/api/user/${id}`,
+        method: 'GET',
+    })
+}
 
-
+export const getInfo = () => {
+    return request({
+        url: '/api/user/whoami',
+        method: 'GET',
+    })
+}

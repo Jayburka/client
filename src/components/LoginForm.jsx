@@ -2,13 +2,13 @@
  * @Author: qiangqiang.cao
  * @Date: 2025-04-12 17:07:24
  * @LastEditors: OBKoro1
- * @LastEditTime: 2025-04-14 00:06:09
+ * @LastEditTime: 2025-04-14 20:51:06
  * @FilePath: \client\src\components\LoginForm.jsx
  * Copyright (c) 2023 - 2024, Shanghai Rural Commercial Bank Co., LTD. ALL rights reserved.
  */
 import React, { useState, useRef, useEffect } from 'react'
 import { Form, Input, Modal, Radio, Row, Col, Button, message } from 'antd';
-import { getCaptcha, checkUserExist, addUser } from '../api/user';
+import { getCaptcha, checkUserExist, addUser, userLogin, getUserById } from '../api/user';
 import { setUser, changeLoginStatus } from '../redux/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from '../css/LoginForm.module.css';
@@ -18,7 +18,7 @@ function LoginForm(props) {
     const [radioValue, setRadioValue] = useState('signin');
     const [loginInfo, setLoginInfo] = useState({
         loginId: '',  
-        password: '',
+        loginPwd: '',
         captcha: '',
         remember: false
     });
@@ -34,8 +34,22 @@ function LoginForm(props) {
     const handleRadioChange = (e) => {
         setRadioValue(e.target.value);
     }
-    const LoginHandler = (values) => {
-        console.log(values);
+    async function LoginHandler() {
+      const result =await userLogin(loginInfo)
+      const res = result.data;
+      if(!res){
+        message.warning("登录失败");
+        handleCaptchaClick();
+      }else if(!res.data.enabled){
+        message.error('账号已禁用');
+        handleCaptchaClick();
+      }else{
+          localStorage.userToken = res.token;
+          const userInfo = await getUserById(res.data._id);
+          dispatch(setUser(userInfo));
+          dispatch(changeLoginStatus(true));
+          props.closeModel();
+      }
     }
     const layout = {
       labelCol: {
@@ -129,8 +143,8 @@ function LoginForm(props) {
                         <Form.Item label="登录账号" name="loginId" rules={[{ required: true, message: '请输入登录账号' }]}>
                           <Input placeholder='请输入登录账号' value={loginInfo.loginId} onChange={(e) => updateLoginInfo('loginId', e.target.value)} />
                         </Form.Item>
-                        <Form.Item label="登录密码" name="password" rules={[{ required: true, message: '请输入登录密码' }]}>
-                          <Input.Password placeholder='请输入登录密码' value={loginInfo.password} onChange={(e) => updateLoginInfo('password', e.target.value)} />
+                        <Form.Item label="登录密码" name="loginPwd" rules={[{ required: true, message: '请输入登录密码' }]}>
+                          <Input.Password placeholder='请输入登录密码' value={loginInfo.loginPwd} onChange={(e) => updateLoginInfo('loginPwd', e.target.value)} />
                         </Form.Item>
                         <Form.Item labelAlign='left' label="验证码" name="captcha" rules={[{ required: true, message: '请输入验证码' }]}>
                           <Row>
@@ -145,6 +159,24 @@ function LoginForm(props) {
                         <Form.Item  name="remember" valuePropName="checked" initialValue={false}>
                           <Radio value={loginInfo.remember} onChange={handleRadioChange}>是否记住</Radio>
                         </Form.Item>
+                        <Form.Item
+                            wrapperCol={{
+                                offset: 5,
+                                span: 16,
+                            }}
+                        >
+                            <Button
+                                type="primary"
+                                htmlType="submit"
+                                style={{ marginRight: 20 }}
+                            >
+                                登录
+                            </Button>
+                            <Button type="primary" htmlType="submit">
+                                重置
+                            </Button>
+                        </Form.Item>
+                
                       </Form>)
     }else{
       container = (
