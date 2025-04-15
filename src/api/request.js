@@ -2,7 +2,7 @@
  * @Author: qiangqiang.cao
  * @Date: 2025-04-13 16:19:36
  * @LastEditors: OBKoro1
- * @LastEditTime: 2025-04-14 22:22:49
+ * @LastEditTime: 2025-04-15 19:57:32
  * @FilePath: \client\src\api\request.js
  * Copyright (c) 2023 - 2024, Shanghai Rural Commercial Bank Co., LTD. ALL rights reserved.
  */
@@ -23,7 +23,6 @@ request.interceptors.request.use(config => {
 });
 
 request.interceptors.response.use(response => {
-    console.log(response);
     if(response.status === 200){
         return response.data;
     }else{

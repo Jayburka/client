@@ -2,7 +2,7 @@
  * @Author: qiangqiang.cao
  * @Date: 2025-04-12 17:07:24
  * @LastEditors: OBKoro1
- * @LastEditTime: 2025-04-14 20:51:06
+ * @LastEditTime: 2025-04-15 20:01:28
  * @FilePath: \client\src\components\LoginForm.jsx
  * Copyright (c) 2023 - 2024, Shanghai Rural Commercial Bank Co., LTD. ALL rights reserved.
  */
@@ -46,7 +46,7 @@ function LoginForm(props) {
       }else{
           localStorage.userToken = res.token;
           const userInfo = await getUserById(res.data._id);
-          dispatch(setUser(userInfo));
+          dispatch(setUser(userInfo.data));
           dispatch(changeLoginStatus(true));
           props.closeModel();
       }
@@ -91,7 +91,6 @@ function LoginForm(props) {
     }
     async function signupHandler(values){
         await addUser(values).then(res => {
-          console.log(res.data);
           if(res.data){
             dispatch(setUser({
               loginId: res.data.loginId,
@@ -109,7 +108,6 @@ function LoginForm(props) {
           } 
         });
         
-        console.log(user);
     }
     function handleCancel(){
       setLoginInfo({

@@ -16,7 +16,6 @@ export default function NavHeader(props) {
         { value: 'issue', label: '问答' },
         { value: 'book', label: '书籍' },
       ];
-    const onSearch = (value) => console.log(value);
   return (
     <div className='headerContainer'>
         {/* 左侧logo */}
@@ -25,7 +24,7 @@ export default function NavHeader(props) {
             </div>
         </div>
         {/* 头部导航  */}
-        <nav className="navigationContainer">
+        <nav className="navContainer">
             <NavLink to="/" className="navigation">问答</NavLink>
             <NavLink to="/books" className="navigation">书籍</NavLink>
             <NavLink to="/interview" className="navigation">面试题</NavLink>
