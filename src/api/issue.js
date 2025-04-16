@@ -9,3 +9,12 @@ export const getIssueList = (params) => {
         }
     );
 }
+
+export const getType = () => {
+    return request(
+        {
+            url: '/api/type',
+            method: 'GET',
+        } 
+    );
+}
