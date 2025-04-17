@@ -1,8 +1,8 @@
 /*
  * @Author: qiangqiang.cao
  * @Date: 2025-04-13 16:21:36
- * @LastEditors: OBKoro1
- * @LastEditTime: 2025-04-14 22:29:04
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2025-04-17 15:56:22
  * @FilePath: \client\src\api\user.js
  * Copyright (c) 2023 - 2024, Shanghai Rural Commercial Bank Co., LTD. ALL rights reserved.
  */
@@ -51,6 +51,16 @@ export const getUserById = (id) => {
 export const getInfo = () => {
     return request({
         url: '/api/user/whoami',
+        method: 'GET',
+    })
+}
+/**
+ * 
+ * @returns 获取积分前十的用户
+ */
+export const getUserByPointsRankApi = () => {
+    return request({
+        url: '/api/user/pointsrank',
         method: 'GET',
     })
 }
